@@ -30,9 +30,24 @@ struct ContentView: View {
             }
             Section {
                 Toggle(isOn: $seen) {
-                    Text("Has seen this movie")
+                    if title == "" {
+                        Text("Has seen this movie")
+                    } else {
+                        Text("I have see \(title)")
+                    }
+                    
                 }
             }
+            Section{
+                Button(action:{}) {
+                    HStack {
+                        Spacer()
+                        Text("Save")
+                        Spacer() 
+                    }
+                }
+            }
+
         }.listStyle(GroupedListStyle())
         
     }
