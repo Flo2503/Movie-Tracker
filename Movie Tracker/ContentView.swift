@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var title = ""
+    @State var rating = 3.0
+    
     var body: some View {
-        Image("code").resizable().scaledToFit().padding()
+        List {
+            Section{
+                TextField("Movie title", text: $title)
+            }
+            Section{
+                Slider(value: $rating, in: 1...5, step: 1)
+            }
+        }.listStyle(GroupedListStyle())
+        
     }
 }
 
