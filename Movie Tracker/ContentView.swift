@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State var title = ""
     @State var rating = 3.0
+    @State var seen = false
+
     
     var body: some View {
         List {
@@ -18,7 +20,18 @@ struct ContentView: View {
                 TextField("Movie title", text: $title)
             }
             Section{
+                HStack() {
+                    Spacer()
+                    Text(String(repeating: "★", count: Int(rating))).foregroundColor(.yellow).font(.title)
+                    Spacer()
+
+                }
                 Slider(value: $rating, in: 1...5, step: 1)
+            }
+            Section {
+                Toggle(isOn: $seen) {
+                    Text("Has seen this movie")
+                }
             }
         }.listStyle(GroupedListStyle())
         
