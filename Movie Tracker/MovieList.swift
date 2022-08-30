@@ -17,7 +17,13 @@ struct MovieList: View {
                 NavigationLink(destination: MovieDetail(movie: currentMovie)) {
                     Text(currentMovie.title)
                 }
-            }.navigationTitle("Movies")
+            }.navigationTitle("Movies").toolbar {
+                ToolbarItemGroup {
+                    NavigationLink(destination: MovieDetail(movie: Movie())) {
+                        Text("Create")
+                    }
+                }
+            }
         }
     }
 }
