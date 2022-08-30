@@ -12,8 +12,12 @@ struct MovieList: View {
     var movies = [Movie(), Movie(), Movie()]
     
     var body: some View {
-        List(movies) { movie in
-            Text(movie.title)
+        NavigationView {
+            List(movies) { currentMovie in
+                NavigationLink(destination: MovieDetail(movie: currentMovie)) {
+                    Text(currentMovie.title)
+                }
+            }.navigationTitle("Movies")
         }
     }
 }

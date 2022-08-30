@@ -38,14 +38,14 @@ struct MovieDetail: View {
                     }
                 }
             }
-            Section{
+            Section{ 
                 Button(action:{}) {
                     HStack {
                         Spacer()
                         Text("Save")
                         Spacer()
                     }
-                }
+                }.disabled(movie.title.isEmpty )
             }
         }.listStyle(GroupedListStyle())
     }
