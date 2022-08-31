@@ -9,18 +9,18 @@ import SwiftUI
 
 struct MovieList: View {
     
-    var movies = [Movie(), Movie(), Movie()]
+    @ObservedObject var movieStorage = MovieStorage()
     
     var body: some View {
         NavigationView {
-            List(movies) { currentMovie in
-                NavigationLink(destination: MovieDetail(movie: currentMovie)) {
+            List(movieStorage.movies) { currentMovie in
+                NavigationLink(destination: MovieDetail(movie: currentMovie, movieStorage: movieStorage, newMovie: false)) {
                     Text(currentMovie.title)
                 }
             }.navigationTitle("Movies").toolbar {
                 ToolbarItemGroup {
-                    NavigationLink(destination: MovieDetail(movie: Movie())) {
-                        Text("Create")
+                    NavigationLink(destination: MovieDetail(movie: Movie(), movieStorage: movieStorage, newMovie: true)) {
+                        Image(systemName: "plus.circle")
                     }
                 }
             }
