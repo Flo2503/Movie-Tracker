@@ -44,6 +44,12 @@ struct MovieDetail: View {
                 Button(action:{
                     if self.newMovie {
                         self.movieStorage.movies.append(movie)
+                    } else {
+                        for x in 0..<self.movieStorage.movies.count {
+                            if self.movieStorage.movies[x].id == self.movie.id {
+                                self.movieStorage.movies[x] = self.movie
+                            }
+                        }
                     }
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
